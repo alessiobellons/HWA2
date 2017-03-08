@@ -1,0 +1,60 @@
+## task 1
+## jacknife thetas, where the (i) element is excluded
+jk <- function(vx, fun){
+  n = length(vx)
+  u = rep(0,n)
+    for (i in 1:n){
+    u[i] <-  fun(vx[-i])
+     }
+  return(u)
+}
+
+a <- jk(x, mean)
+
+#### task 2
+# Let the parameter of interest be the variance E(X−E(X))2. 
+# Under normality, the maximum
+# likelihood estimator is (variance formula), which is an estimator 
+# with a bias that can
+# be corrected by using the jackknife. Write a function
+mlevar <- function(vx) {
+  
+  n <- length(vx)
+  x <- vector()
+  for(i in 1:n){
+    x[i] <- (vx[i]-mean(vx))^2
+  }
+  return(sum(x)/(n))
+}
+
+
+
+
+#######  task 2. 3
+jkest <- function(vx, fun) {
+  n <- length(vx)
+  
+  jk <- function(vx, fun){
+    n = length(vx)
+    u = vector()
+    for (i in 1:n){
+      u[i] = fun(vx[-i])
+    }
+    return(u)
+  }
+  
+  u <- jk(vx, fun)
+  uu <- sum(u)/n
+  return(n*fun(vx) - ((n-1)*uu))
+  
+}
+
+## 2.4
+x  = c(-0.6, 0, -0.9, 0.2, -0.7, 1.8, 0.7, 0.9, 0.4, 1.7)
+
+x
+jkest(x,mlevar)
+var(x)
+
+
+
