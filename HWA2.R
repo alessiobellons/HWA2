@@ -26,7 +26,6 @@ $i = 1;...; n$, in the report.}
 f(y_i|x_i;\theta;\sigma^2)=\prod_{i=1}^{n}\frac{1}{\sigma\sqrt{2\pi}}exp\left[ - \frac{(y_i-(x_i\theta))^2}{2\sigma^2}\right] \\
 logL(\theta;\sigma^2|\bold{x})= -\frac{n}{2}log(\sigma^22\pi)-\frac{\sum_{i=1}^{n}(y_i-x_i\theta)^2}{2\sigma^2}
 \end{align*}
-
 \end{document}
 
 
